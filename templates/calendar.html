@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .checkbox-group {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 5px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .head1{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: #ff99b3;
+            font-size: 60px;
+        }
+        .left{
+            float: left;
+            margin-top: 0px;
+            margin-left: 100px;
+        }
+        .right{
+            float: right;
+            margin-right: 0px;
+            margin-top: -40px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="head1">Calendar</h1>
+    <div class="left">
+    <form action="{{ url_for('calendar') }}" method="POST">
+        <label for="start_date">Start of Period Date:</label>
+        <input type="date" id="start_date" name="start_date" required><br>
+        <label for="end_date">End of Period Date:</label>
+        <input type="date" id="end_date" name="end_date" required><br>
+        <label for="symptoms">Symptoms:</label><br>
+        <div class="checkbox-group">
+            <input type="checkbox" id="nauseated" name="symptoms" value="nauseated">
+            <label for="nauseated">Nauseated</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="cramps" name="symptoms" value="cramps">
+            <label for="cramps">Cramps</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="bloating" name="symptoms" value="bloating">
+            <label for="bloating">Bloating</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="tiredness" name="symptoms" value="tiredness">
+            <label for="tiredness">Tiredness</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="cravings" name="symptoms" value="cravings">
+            <label for="cravings">Cravings</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="headache" name="symptoms" value="headache">
+            <label for="headache">Headache</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="backpain" name="symptoms" value="backpain">
+            <label for="backpain">Back Pain</label>
+        </div>
+        <!-- Add more checkbox groups for other symptoms -->
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+    <div class="right">
+        <img src="{{ url_for('static', filename='images/bg3.png') }}" alt="Image Description" height="500px" width="500px" >
+    </div>
+</body>
+</html>

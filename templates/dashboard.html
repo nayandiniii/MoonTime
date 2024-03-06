@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            text-align: center; /* Center align all text within the body */
+        }
+        .head1{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: #ff99b3;
+            font-size: 60px;
+        }
+        table {
+            margin: 0 auto; /* Center align the table */
+        }
+        .head1{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: #ff99b3;
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="head1">Dashboard</h1>
+    <h2>User Information</h2>
+    <p style="text-align: center;">User's Name: {{ user_data[1] }}</p>
+    <p>Mark the calendar here <a href="{{ url_for('calendar') }}">Calendar</a></p>
+    <h3>Period Data</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Symptoms</th>
+                <th>Cycle Length</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in period_data %}
+            <tr>
+                <td>{{ data[0] }}</td>
+                <td>{{ data[1] }}</td>
+                <td>{{ data[2] }}</td>
+                <td>{{ data[3] }}</td>
+                <td>{{ data[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>After Analyzing:</h2>
+    <p>{{ analysis_result }}</p>
+    <h2>Cycle Length Variation Chart</h2>
+    <!-- Add chart container -->
+    <div id="chart-container">
+        <canvas id="cycle-chart"></canvas>
+    </div>
+    
+    <script>
+        // Ensure months and cycleLengths are only declared once
+        var months = JSON.parse('{{ months | tojson | safe }}');
+        var cycleLengths = JSON.parse('{{ cycle_lengths | tojson | safe }}');
+        
+        // Get chart canvas element
+        var ctx = document.getElementById('cycle-chart').getContext('2d');
+        
+        // Render cycle length variation chart
+        var cycleChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Cycle Length Variation',
+                data: cycleLengths,
+                backgroundColor: '#ff99b3', // Fill color
+                borderColor: '#ff4d79',
+                borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Average Cycle Length (Days)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

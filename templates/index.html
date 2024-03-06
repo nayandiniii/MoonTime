@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Period Tracking App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+         .head1{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: #ff99b3;
+            text-align: center;
+            font-size: 70px;
+            margin-left: 400px;
+            font-style: oblique;
+            }
+            .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff99b3; /* Button color */
+            color: #fff; /* Text color */
+            text-decoration: none; /* Remove default underline */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Change cursor on hover */
+        }
+
+        .button:hover {
+            background-color: #fc648a; /* Darker button color on hover */
+        }
+        .p1{
+            text-align: center;
+            color: #ff99b3;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .a:hover{
+            color: rgb(227, 92, 115);
+        }
+        .a:visited{
+            color: #ff99b3;
+        }
+        .head2{
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-style: italic;
+            color: #ff99b3;
+            font-size: 20px;
+        }
+        .left{
+            float: left;
+            margin-top: -250px;
+            margin-left: -70px;
+        }
+        .right{
+            float: right;
+            margin-right: 300px;
+            margin-top: 120px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="head1">MoonTime</h1>
+    <div class="right">
+        <h2 class="head2"> Your personal period tracking app</h2><br><br><br>
+        <p class="p1"><a href="{{ url_for('login') }}" class="button">Login/Signup</a></p>
+    </div>
+    <div class="left">
+        <img src="{{ url_for('static', filename='images/4274784.png') }}" alt="Image Description" height="700px" width="700px" >
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            text-align: center; /* Center align all text within the body */
+        }
+        .head1{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: #ff99b3;
+            font-size: 60px;
+        }
+        .left{
+            float: left;
+            margin-top: -250px;
+            margin-left: 70px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="head1">Login</h1>
+    <form action="{{ url_for('login') }}" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br><br>
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+</body>
+<div class="left">
+    <img src="{{ url_for('static', filename='images/bgr.png') }}" alt="Image Description" height="400px" width="400px" >
+</div>
+</html>
