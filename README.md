@@ -22,10 +22,10 @@ Moontime is a period tracking application designed to help women monitor their m
 ## Screenshots
 
 ### Home Page
-![Home Page](/statoc/images/home.png)
+![Home Page](/static/images/home.png)
 
 ### Signup Page
-![Signup Page](/static/images/signup_page.png)
+![Signup Page](/static/images/signup.png)
 
 ### Dashboard
 ![Dashboard](/static/images/board.png)
